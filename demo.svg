@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="850" height="980">
+  <defs>
+    <style>
+      .bg { fill: #1a1b26; }
+      .titlebar { fill: #24283b; }
+      .red-dot { fill: #f7768e; }
+      .yel-dot { fill: #e0af68; }
+      .grn-dot { fill: #9ece6a; }
+      .text { font-family: 'Cascadia Code', 'Fira Code', 'JetBrains Mono', monospace; font-size: 13px; }
+      .white { fill: #c0caf5; }
+      .dim { fill: #565f89; }
+      .red { fill: #f7768e; }
+      .yellow { fill: #e0af68; }
+      .green { fill: #9ece6a; }
+      .cyan { fill: #7dcfff; }
+      .magenta { fill: #bb9af7; }
+      .bold { font-weight: bold; }
+      .title-text { fill: #c0caf5; font-family: 'Cascadia Code', monospace; font-size: 13px; }
+    </style>
+  </defs>
+  <rect class="bg" width="850" height="980" rx="10"/>
+  <rect class="titlebar" width="850" height="38" rx="10"/>
+  <rect class="titlebar" width="850" height="20" y="28"/>
+  <circle class="red-dot" cx="20" cy="19" r="6"/>
+  <circle class="yel-dot" cx="40" cy="19" r="6"/>
+  <circle class="grn-dot" cx="60" cy="19" r="6"/>
+  <text class="title-text" x="380" y="23" text-anchor="middle">root@server:~</text>
+
+  <!-- Command -->
+  <text class="text green bold" x="20" y="68">root@server:~#</text>
+  <text class="text white" x="165" y="68">sudo ./linux_user_audit.sh</text>
+
+  <!-- Section 1 -->
+  <text class="text white bold" x="20" y="100">═══════════════════════════════════════════════════════════</text>
+  <text class="text white bold" x="20" y="118">  1. SYSTEM OVERVIEW</text>
+  <text class="text white bold" x="20" y="136">═══════════════════════════════════════════════════════════</text>
+  <text class="text cyan" x="20" y="156">[INFO]     Hostname:      prod-web-01</text>
+  <text class="text cyan" x="20" y="174">[INFO]     Kernel:        5.15.0-91-generic</text>
+  <text class="text cyan" x="20" y="192">[INFO]     Distro:        Ubuntu 22.04.3 LTS</text>
+  <text class="text cyan" x="20" y="210">[INFO]     Total accounts: 34  |  Human users (UID>=1000): 6</text>
+
+  <!-- Section 3 -->
+  <text class="text white bold" x="20" y="244">═══════════════════════════════════════════════════════════</text>
+  <text class="text white bold" x="20" y="262">  3. UID 0 ACCOUNTS CHECK</text>
+  <text class="text white bold" x="20" y="280">═══════════════════════════════════════════════════════════</text>
+  <text class="text red" x="20" y="300">[CRITICAL] 2 accounts with UID 0: root toor</text>
+
+  <!-- Section 4 -->
+  <text class="text white bold" x="20" y="334">═══════════════════════════════════════════════════════════</text>
+  <text class="text white bold" x="20" y="352">  4. PASSWORD STATUS AUDIT</text>
+  <text class="text white bold" x="20" y="370">═══════════════════════════════════════════════════════════</text>
+  <text class="text red" x="20" y="390">[CRITICAL] EMPTY password: testuser</text>
+  <text class="text yellow" x="20" y="408">[WARNING]  No password expiry set for human user: deploy (max=99999)</text>
+  <text class="text green" x="20" y="426">[OK]       No accounts with empty passwords (except above)</text>
+  <text class="text cyan" x="20" y="444">[INFO]     Locked/disabled accounts: 22</text>
+
+  <!-- Section 5 -->
+  <text class="text white bold" x="20" y="478">═══════════════════════════════════════════════════════════</text>
+  <text class="text white bold" x="20" y="496">  5. SUDO PRIVILEGES AUDIT</text>
+  <text class="text white bold" x="20" y="514">═══════════════════════════════════════════════════════════</text>
+  <text class="text red" x="20" y="534">[CRITICAL] NOPASSWD:ALL found — passwordless root:</text>
+  <text class="text dim" x="20" y="552">           deploy  ALL=(ALL) NOPASSWD: ALL</text>
+  <text class="text yellow" x="20" y="570">[WARNING]  Full sudo (ALL:ALL) ALL for: jenkins</text>
+  <text class="text cyan" x="20" y="588">[INFO]     Group 'sudo': admin,deploy</text>
+
+  <!-- Section 7 -->
+  <text class="text white bold" x="20" y="622">═══════════════════════════════════════════════════════════</text>
+  <text class="text white bold" x="20" y="640">  7. SSH SECURITY CHECK</text>
+  <text class="text white bold" x="20" y="658">═══════════════════════════════════════════════════════════</text>
+  <text class="text red" x="20" y="678">[CRITICAL] SSH PermitRootLogin is YES</text>
+  <text class="text green" x="20" y="696">[OK]       SSH PermitEmptyPasswords: no (default)</text>
+  <text class="text green" x="20" y="714">[OK]       SSH MaxAuthTries: 6</text>
+  <text class="text cyan" x="20" y="732">[INFO]     User 'admin' has 3 SSH authorized key(s)</text>
+
+  <!-- Section 9 -->
+  <text class="text white bold" x="20" y="766">═══════════════════════════════════════════════════════════</text>
+  <text class="text white bold" x="20" y="784">  9. SUID/SGID BINARIES</text>
+  <text class="text white bold" x="20" y="802">═══════════════════════════════════════════════════════════</text>
+  <text class="text yellow" x="20" y="822">[WARNING]  Unusual SUID/SGID binary: /usr/local/bin/backup_tool</text>
+  <text class="text yellow" x="20" y="840">[WARNING]  Unusual SUID/SGID binary: /opt/monitor/agent</text>
+
+  <!-- Summary -->
+  <text class="text white bold" x="20" y="874">═══════════════════════════════════════════════════════════</text>
+  <text class="text white bold" x="20" y="892">  AUDIT SUMMARY</text>
+  <text class="text white bold" x="20" y="910">═══════════════════════════════════════════════════════════</text>
+  <text class="text red bold" x="20" y="934">  Critical findings: 4</text>
+  <text class="text yellow bold" x="20" y="952">  Warnings:          5</text>
+  <text class="text green bold" x="20" y="970">  Passed checks:     7</text>
+</svg>
